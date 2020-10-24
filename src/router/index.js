@@ -14,15 +14,19 @@ const routes = [
   {
     path: '/reg',
     name: 'reg',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Reg.vue')
   },
   {
     path: '/forget',
     name: 'forget',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Forget.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Forget.vue'),
+    beforeEnter: (to, from, next) => {
+      if (from.name === 'login') {
+        next()
+      } else {
+        next('/login')
+      }
+    }
   }
 ]
 

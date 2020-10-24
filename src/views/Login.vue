@@ -127,7 +127,6 @@ export default {
     }
   },
   mounted () {
-    this.$confirm('testsdsda ')
     let sid = ''
     if (localStorage.getItem('sid')) {
       sid = localStorage.getItem('sid')
