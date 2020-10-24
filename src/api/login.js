@@ -5,7 +5,7 @@ import axios from '@/utils/request'
  * @param {*} sid 唯一标识
  */
 const getCode = (sid) => {
-  return axios.get('/getCaptcha', {
+  return axios.get('/public/getCaptcha', {
     params: {
       sid: sid
     }

@@ -127,11 +127,12 @@ export default {
     }
   },
   mounted () {
+    this.$confirm('testsdsda ')
     let sid = ''
     if (localStorage.getItem('sid')) {
       sid = localStorage.getItem('sid')
     } else {
-      sid = uuid()
+      sid = uuidv4()
       localStorage.setItem('sid', sid)
     }
     this.$store.commit('setSid', sid)
