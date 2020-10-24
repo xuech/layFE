@@ -64,6 +64,13 @@ export default {
   },
   methods: {
     _getLists () {
+      if (this.isEnd) {
+        return
+      }
+      if (this.isRepeat) {
+        return
+      }
+      this.isRepeat = true
       let options = {
         catalog: this.catalog,
         isTop: this.isTop,
@@ -74,11 +81,31 @@ export default {
         status: this.status
       }
       getList(options).then((res) =>{
-        console.log(res);
+        // 加入一个请求锁，防止用户多次点击，等待数据返回后，再打开
+        this.isRepeat = false
+        // 对于异常的判断，res.code 非200，我们给用户一个提示
+        // 判断是否lists长度为0，如果为零即可以直接赋值
+        // 当Lists长度不为0，后面请求的数据，加入到Lists里面来
+        if (res.code === 200) {
+          // 判断res.data的长度，如果小于20条，则是最后页
+          if (res.data.length < this.limit) {
+            this.isEnd = true
+          }
+          if (this.lists.length === 0) {
+            this.lists = res.data
+          } else {
+            this.lists = this.lists.concat(res.data)
+          }
+          this.page++
+        }
+      }).catch((err) => {
+        this.isRepeat = false
+        if (err) {
+          this.$alert(err.message)
+        }
       })
     },
     nextPage() {
-      this.page++
       this._getLists()
     },
     search (val) {
