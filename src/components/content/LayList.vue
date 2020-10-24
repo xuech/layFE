@@ -62,7 +62,33 @@ export default {
       }]
     }
   },
+  watch: {
+    current (newval, oldval) {
+      // 去兼听current标签是否有变化，如果有变化，则需要重新进行查询
+      this.init()
+    },
+    $route (newval, oldval) {
+      let catalog = this.$route.params['catalog']
+      if (typeof catalog !== 'undefined' && catalog !== '') {
+        this.catalog = catalog
+      }
+      this.init()
+    }
+  },
   methods: {
+    mounted () {
+      let catalog = this.$route.params['catalog']
+      if (typeof catalog !== 'undefined' && catalog !== '') {
+        this.catalog = catalog
+      }
+      this._getLists()
+    },
+    init () {
+      this.page = 0
+      this.lists = []
+      this.isEnd = false
+      this._getLists()
+    },
     _getLists () {
       if (this.isEnd) {
         return
@@ -80,30 +106,30 @@ export default {
         tag: this.tag,
         status: this.status
       }
-      getList(options).then((res) =>{
-        // 加入一个请求锁，防止用户多次点击，等待数据返回后，再打开
-        this.isRepeat = false
-        // 对于异常的判断，res.code 非200，我们给用户一个提示
-        // 判断是否lists长度为0，如果为零即可以直接赋值
-        // 当Lists长度不为0，后面请求的数据，加入到Lists里面来
-        if (res.code === 200) {
-          // 判断res.data的长度，如果小于20条，则是最后页
-          if (res.data.length < this.limit) {
-            this.isEnd = true
-          }
-          if (this.lists.length === 0) {
-            this.lists = res.data
-          } else {
-            this.lists = this.lists.concat(res.data)
-          }
-          this.page++
-        }
-      }).catch((err) => {
-        this.isRepeat = false
-        if (err) {
-          this.$alert(err.message)
-        }
-      })
+      // getList(options).then((res) =>{
+      //   // 加入一个请求锁，防止用户多次点击，等待数据返回后，再打开
+      //   this.isRepeat = false
+      //   // 对于异常的判断，res.code 非200，我们给用户一个提示
+      //   // 判断是否lists长度为0，如果为零即可以直接赋值
+      //   // 当Lists长度不为0，后面请求的数据，加入到Lists里面来
+      //   if (res.code === 200) {
+      //     // 判断res.data的长度，如果小于20条，则是最后页
+      //     if (res.data.length < this.limit) {
+      //       this.isEnd = true
+      //     }
+      //     if (this.lists.length === 0) {
+      //       this.lists = res.data
+      //     } else {
+      //       this.lists = this.lists.concat(res.data)
+      //     }
+      //     this.page++
+      //   }
+      // }).catch((err) => {
+      //   this.isRepeat = false
+      //   if (err) {
+      //     this.$alert(err.message)
+      //   }
+      // })
     },
     nextPage() {
       this._getLists()
