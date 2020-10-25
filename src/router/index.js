@@ -6,6 +6,9 @@ const Index = () =>
   import(/* webpackChunkName: 'index' */ '@/views/channels/Index.vue')
 const Template1 = () =>
   import(/* webpackChunkName: 'template1' */ '@/views/channels/Template1.vue')
+
+const Center = () =>
+  import(/* webpackChunkName: 'center' */ '@/views/Center.vue')
 Vue.use(VueRouter)
 
 const routes = [
@@ -45,7 +48,12 @@ const routes = [
     path: '/forget',
     name: 'forget',
     component: () => import(/* webpackChunkName: "about" */ '../views/Forget.vue'),
-  }
+  },
+  {
+    path: '/center',
+    name: 'center',
+    component: Center
+  },
 ]
 
 const router = new VueRouter({

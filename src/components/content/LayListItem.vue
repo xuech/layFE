@@ -3,7 +3,8 @@
     <ul class="fly-list">
       <li v-for="(item,index) in items" :key="'listitem' + index">
         <router-link class="fly-avatar" :to="{name: 'home', params: {uid: item.uid._id}}" link>
-          <img :src="item.uid.pic ? item.uid.pic : '/img/header.jpg'" alt="贤心" />
+          <!-- <img :src="item.uid.pic ? item.uid.pic : '/img/header.jpg'" alt="贤心" /> -->
+          <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg">
         </router-link>
         <h2>
           <a class="layui-badge">{{item.catalog}}</a>

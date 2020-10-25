@@ -11,7 +11,7 @@
 import Pannel from '@/components/Pannel.vue'
 
 export default {
-  name: 'Home',
+  name: 'home',
   components: {
     Pannel
   }

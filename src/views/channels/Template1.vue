@@ -5,7 +5,7 @@
                 <List />
             </div>
             <div class="layui-col-md4">
-                <HotList />
+                <!-- <HotList /> -->
                 <Ads />
                 <Links />
             </div>

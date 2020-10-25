@@ -27,7 +27,7 @@ import Links from '@/components/sideBar/LayLinks'
 import List from '@/components/content/LayList'
 
 export default {
-    name: 'Home',
+    name: 'Index',
     components: {
         Tips,
         Sign,
