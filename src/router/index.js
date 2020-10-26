@@ -67,6 +67,7 @@ const routes = [
   {
     path: '/center',
     component: Center,
+    meta: { requiresAuth: true },
     linkActiveClass: 'layui-this',
     children: [
       {
@@ -137,26 +138,29 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next)=>{
-  const isLogin = store.state.isLogin
-  // 需要用户登录的页面进行区别
-  if (isLogin) {
-    // 已经登录的状态
-    // 权限判断，meta元数据
-    next()
-  } else {
-    const token = localStorage.getItem('token')
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'))
-    if (token !== '' && token !== null) {
-      store.commit('setToken',token)
-      store.commit('setUserInfo',userInfo)
-      store.commit('setIsLogin',true)
+  const token = localStorage.getItem('token')
+  const userInfo = JSON.parse(localStorage.getItem('userInfo'))
+  if (token !== '' && token !== null) {
+    store.commit('setToken',token)
+    store.commit('setUserInfo',userInfo)
+    store.commit('setIsLogin',true)
+  }
+  
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    const isLogin = store.state.isLogin
+    // 需要用户登录的页面进行区别
+    if (isLogin) {
+      // 已经登录的状态
+      // 权限判断，meta元数据
       next()
     } else {
       // 未登录的状态
       next('/login')
     }
+  } else {
+    // 公共页面，不需要用户登录
+    next()
   }
-
 })
 
 export default router
