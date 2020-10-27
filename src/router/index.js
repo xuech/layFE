@@ -26,7 +26,7 @@ const MyCollection = () => import(/* webpackChunkName: 'mycollection' */ '@/comp
 const NoFound = () => import(/* webpackChunkName: 'NoFound' */ '@/views/NotFound.vue')
 // const User = () => import(/* webpackChunkName: 'home' */ '@/views/User.vue')
 const NoFound = () =>
-    import(/* webpackChunkName: 'notfound' */ '@/views/NotFound.vue')
+  import(/* webpackChunkName: 'notfound' */ '@/views/NotFound.vue')
 Vue.use(VueRouter)
 
 const routes = [

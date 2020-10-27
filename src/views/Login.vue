@@ -168,7 +168,7 @@ export default {
           requestAnimationFrame(() => {
             this.$refs.observer.reset()
           })
-          this.$router.push({ name: 'index'})
+          this.$router.push({ name: 'index' })
         } else if (res.code === 401) {
           this.$refs.codefield.setErrors([res.msg])
         }
