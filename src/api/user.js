@@ -13,6 +13,9 @@ import store from '@/store';
 // }
 const userSign = () => axios.get('/user/fav')
 
+const updateUserInfo = (data) => axios.post('/user/update', data)
+
 export { 
-  userSign
+  userSign,
+  updateUserInfo
 }

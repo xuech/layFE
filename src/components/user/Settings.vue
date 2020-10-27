@@ -2,7 +2,7 @@
   <div class="fly-panel fly-panel-user" pad20>
     <div class="layui-tab layui-tab-brief" lay-filter="user">
       <ul class="layui-tab-title" id="LAY_mine">
-        <li>
+        <li  class="layui-this">
           <router-link :to="{name: 'info'}">我的资料</router-link>
         </li>
         <li>

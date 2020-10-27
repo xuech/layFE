@@ -14,7 +14,8 @@
           accept="image/png, image/gif, image/jpg"
           @change="upload"
         />
-        <img :src="pic" />
+        <!--<img :src="pic" />-->
+        <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg">
         <span class="loading"></span>
       </div>
     </div>
@@ -32,7 +33,7 @@ export default {
       pic:
         this.$store.state.userInfo && this.$store.state.userInfo.pic
           ? this.$store.state.userInfo.pic
-          : '/img/bear-200-200.jpg',
+          : '/img/qrcode-big.jpg',
       formData: ''
     }
   },

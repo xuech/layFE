@@ -2,7 +2,7 @@
   <div class="fly-panel fly-panel-user" pad20>
     <div class="layui-tab layui-tab-brief">
       <ul class="layui-tab-title">
-        <li>
+        <li  class="layui-this">
           <router-link :to="{name: 'mypost'}">我的发帖</router-link>
         </li>
         <li>

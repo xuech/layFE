@@ -120,7 +120,7 @@ export default {
               regmark: this.regmark
             }
           })
-          this.$alert('更新成功！')
+          this.$alert(res.msg)
         }
       })
     }
