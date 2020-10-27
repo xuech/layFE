@@ -23,10 +23,7 @@ const Passwd = () => import(/* webpackChunkName: 'password' */ '@/components/use
 const Accounts = () => import(/* webpackChunkName: 'accounts' */ '@/components/user/common/Accounts.vue')
 const MyPost = () => import(/* webpackChunkName: 'mypost' */ '@/components/user/common/MyPost.vue')
 const MyCollection = () => import(/* webpackChunkName: 'mycollection' */ '@/components/user/common/MyCollection.vue')
-const NoFound = () => import(/* webpackChunkName: 'NoFound' */ '@/views/NotFound.vue')
 // const User = () => import(/* webpackChunkName: 'home' */ '@/views/User.vue')
-const NoFound = () =>
-  import(/* webpackChunkName: 'notfound' */ '@/views/NotFound.vue')
 Vue.use(VueRouter)
 
 const routes = [
@@ -132,27 +129,6 @@ const routes = [
       }
     ]
   },
-  {
-<<<<<<< HEAD
-    path: '/404',
-    name: '404',
-    component: NoFound
-  },
-  {
-    path: '*',
-    redirect: '/404'
-  }
-  
-=======
-      path: '/404',
-      name: '404',
-      component: NoFound
-    },
-    {
-      path: '*',
-      redirect: '/404'
-    }
->>>>>>> bd17cc6341c18399f9ce555cada5dfd8bce9b3e6
 ]
 
 const router = new VueRouter({
