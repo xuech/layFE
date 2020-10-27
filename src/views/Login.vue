@@ -173,7 +173,7 @@ export default {
           this.$refs.codefield.setErrors([res.msg])
         }
       }).catch((err) => {
-        const data = err.response.data
+        // const data = err.response.data
         if (data.code === 500) {
           this.$alert('用户名密码校验失败，请检查！')
         } else {
