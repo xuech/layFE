@@ -1,10 +1,6 @@
 <template>
   <div class="layui-container flex">
-<<<<<<< HEAD
-    <img src="../../src/assets/img/icon-404.png" width="100px" alt />
-=======
-    <img src="../assets/img/icon-404.png" width="100px" alt />
->>>>>>> bd17cc6341c18399f9ce555cada5dfd8bce9b3e6
+    <img src="../../src/assets/logo-1.png" width="100px" alt />
     <p>找不到页面了</p>
     <router-link class="layui-btn" to="/">回到首页</router-link>
   </div>
