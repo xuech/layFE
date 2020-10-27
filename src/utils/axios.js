@@ -2,6 +2,8 @@
 // 对错误的统一处理
 import axios from 'axios'
 import errorHandle from './errorHandle'
+import store from '@/store'
+import publicConfig from '@/config'
 
 class HttpRequest {
   constructor (baseUrl) {
@@ -22,6 +24,16 @@ class HttpRequest {
   interceptors (instance) {
     // 请求拦截器
     instance.interceptors.request.use((config) => {
+      //1、是否是公共路径
+        let isPublic = false
+        publicConfig.publicPath.map((path) => {
+            isPublic = isPublic || path.test(config.url)
+        })
+      //2、不是的话全局加token
+        const token = store.state.token;
+        if (!isPublic && token) {
+          config.headers.Authorization = 'Bearer ' + token
+        }
       // Do something before request is sent
       return config
     }, (err) => {

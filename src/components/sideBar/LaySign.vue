@@ -53,7 +53,7 @@ export default {
       userSign().then((res) => {
         if (res.code === 200) {
           this.isSign = true
-          updateUserInfo(res)
+          this.updateUserInfo(res)
           this.$pop('', '签到成功！')
         } else {
           this.$pop('', '您已经签到！')

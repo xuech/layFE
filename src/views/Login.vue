@@ -120,8 +120,8 @@ export default {
   },
   data () {
     return {
-      username: '',
-      password: '',
+      username: 'xch@126.com',
+      password: '123456',
       code: '',
       svg: ''
     }
